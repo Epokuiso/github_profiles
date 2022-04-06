@@ -11,6 +11,11 @@ export const Container = styled.main`
         font-size: 24px;
         font-weight: 900;
         margin: 0 auto 0 auto;
+
+        @media (min-width: 750px)
+        {
+            font-size: 28px;
+        }
     }
 
     > h3
@@ -18,6 +23,11 @@ export const Container = styled.main`
         font-size: 14px;
         font-weight: lighter;
         margin: 3.6rem auto 0 auto;
+
+        @media (min-width: 750px)
+        {
+            font-size: 18px;
+        }
     }
 
 `;

@@ -14,6 +14,11 @@ export const Container = styled.div`
         font-size: 14px;
         font-weight: 600;
         outline: none;
+
+        @media (min-width: 750px)
+        {
+            font-size: 18px;
+        }
     }
 
     > input[type='text']
@@ -24,8 +29,13 @@ export const Container = styled.div`
 
         &::placeholder
         {
-            opacity: .8;
+            opacity: .75;
         }
+        @media (min-width: 750px)
+        {
+            width: 320px;
+        }
+
     }
 
     > button

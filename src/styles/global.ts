@@ -5,6 +5,8 @@ export const GlobalStyle = createGlobalStyle`
     :root
     {
         --dark-background-color: #393E46;
+        --dark-text-color: #FFFFFF;
+        --dark-border-color: #00ADB5;
     }
     
     *
@@ -44,5 +46,15 @@ export const GlobalStyle = createGlobalStyle`
     a, button
     {
         cursor: pointer;
+    }
+
+    #root 
+    {
+        align-items: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
     }
 `;

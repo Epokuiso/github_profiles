@@ -4,9 +4,6 @@ I've decided to study frontend web development again, starting with ReactJS.
 In order to keep my discipline and pratice I started a journal on my own.
 50 days of React. Where I'll be learning ReactJS in a deeper way while building projects.
 
-
-So, this is my first day and also my first project. (1/50)
-
 ## About the Project
 APIs allow you to use the real world data that drives platforms like GitHub. You can communicate with the remote servers and get data that you can use to build an app.
 

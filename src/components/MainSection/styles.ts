@@ -9,7 +9,7 @@ export const Container = styled.main`
     > h1
     {
         font-size: 24px;
-        font-weight: 900;
+        font-weight: 600;
         margin: 0 auto 0 auto;
 
         @media (min-width: 750px)
@@ -21,7 +21,7 @@ export const Container = styled.main`
     > h3
     {
         font-size: 14px;
-        font-weight: lighter;
+        font-weight: 500;
         margin: 3.6rem auto 0 auto;
 
         @media (min-width: 750px)

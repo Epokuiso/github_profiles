@@ -12,7 +12,7 @@ export const Container = styled.div`
         border: none;
         color: var(--dark-text-color);
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 500;
         outline: none;
 
         @media (min-width: 750px)

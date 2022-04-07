@@ -1,17 +1,18 @@
 import { createContext } from "react";
 
 
-interface UserInformation
+export interface UserInformation
 {
     username: string;
     followers: number;
     following: number;
     stars: number;
     profile_picture: string;
-    profile_url: string
+    profile_url: string;
 };
 
-const defaultState = 
+
+export const defaultState = 
 {
     username: '',
     followers: 0,
@@ -19,6 +20,7 @@ const defaultState =
     stars: 0,
     profile_picture: '',
     profile_url: ''
-}
+};
+
 
 export const UserInformationContext = createContext <UserInformation> (defaultState); 

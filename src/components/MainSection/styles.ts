@@ -14,7 +14,7 @@ export const Container = styled.main`
 
         @media (min-width: 750px)
         {
-            font-size: 28px;
+            font-size: 32px;
         }
     }
 

@@ -1,4 +1,5 @@
-import { FormEvent, useContext } from "react";
+import { useContext } from "react";
+import { getUserProfileInformation } from "../../api";
 import { UserInformationContext } from "../../context/UserInformationContext";
 import { Container } from "./styles";
 
@@ -11,6 +12,11 @@ export const SearchBar = () =>
         userInformationContext.username = event.target.value;
     }
 
+    const searchUsername = async () =>
+    {
+        console.log (await getUserProfileInformation (userInformationContext.username));
+    }
+
     return (
         <Container>
             <input type='text' 
@@ -18,7 +24,7 @@ export const SearchBar = () =>
             placeholder='Enter a username' 
             onChange={ event => setUsername (event) }
             />
-            <button>Search</button>
+            <button onClick={ async () => await searchUsername() }>Search</button>
         </Container>
     );
 }

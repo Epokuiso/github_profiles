@@ -7,6 +7,8 @@ export const GlobalStyle = createGlobalStyle`
         --dark-background-color: #393E46;
         --dark-text-color: #FFFFFF;
         --dark-border-color: #00ADB5;
+
+        --not-found-color: #FC4F4F;
     }
     
     *

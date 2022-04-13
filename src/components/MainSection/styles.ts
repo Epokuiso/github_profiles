@@ -31,3 +31,15 @@ export const Container = styled.main`
     }
 
 `;
+
+export const ErrorMessage = styled.p`
+    color: var(--not-found-color);
+    font-size: 1.2rem;
+    margin: 0 auto 0 auto;
+
+    &::before
+    {
+        content: 'Error!Usename is invalid or was not found.';
+    }
+
+`

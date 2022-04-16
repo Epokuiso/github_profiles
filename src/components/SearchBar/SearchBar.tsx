@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getUserProfileInformation } from "../../api";
 import { IUserInformation, UserInformationContext } from "../../context/UserInformationContext";
 import { Container, Spinner } from "./styles";
@@ -9,10 +10,12 @@ interface IFoundUser
     setFoundUser: (isFound: boolean) => void
 }
 
+
 export const SearchBar = ({foundUser, setFoundUser}: IFoundUser) =>
 {
     const [searching, setSearching] = useState (false);
     let userInformationContext = useContext (UserInformationContext);
+    let navigate = useNavigate ();
     
     const setUsername = (event: React.ChangeEvent<HTMLInputElement>) =>
     {
@@ -32,9 +35,15 @@ export const SearchBar = ({foundUser, setFoundUser}: IFoundUser) =>
         setSearching (false);
     }
 
+    const redirectToProfilePage = () => 
+    {
+        setFoundUser (true);
+        navigate ('profile');
+    }
+
     const checkUserFound = (userInformation: IUserInformation) =>
     {
-        typeof userInformation.username === 'undefined' ? setFoundUser (false) : setFoundUser (true);
+        typeof userInformation.username === 'undefined' ? setFoundUser (false) : redirectToProfilePage ();
     }
 
     return (

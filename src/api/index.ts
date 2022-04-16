@@ -1,10 +1,10 @@
-import { defaultState, UserInformation } from "../context/UserInformationContext";
+import { defaultState, IUserInformation } from "../context/UserInformationContext";
 
 
 const URL = "https://api.github.com/";
 const USERS = "users/";
 
-let userInformation: UserInformation = defaultState;
+let userInformation: IUserInformation = defaultState;
 
 export const getUserProfileInformation = async (username: string) => 
 {

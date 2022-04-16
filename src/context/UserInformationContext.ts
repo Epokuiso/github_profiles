@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 
-export interface UserInformation
+export interface IUserInformation
 {
     username: string;
     followers: number;
@@ -23,4 +23,4 @@ export const defaultState =
 };
 
 
-export const UserInformationContext = createContext <UserInformation> (defaultState); 
+export const UserInformationContext = createContext <IUserInformation> (defaultState); 

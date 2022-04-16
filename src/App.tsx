@@ -1,11 +1,11 @@
 import { MainSection } from "./components/MainSection/MainSection";
 import { NavigationBar } from "./components/NavigationBar/NavigationBar";
-import { defaultState, UserInformation, UserInformationContext } from "./context/UserInformationContext";
+import { defaultState, IUserInformation, UserInformationContext } from "./context/UserInformationContext";
 
 
 export const App = () => 
 {
-  let userInformation :UserInformation = defaultState; 
+  let userInformation: IUserInformation = defaultState; 
 
   return (
     <UserInformationContext.Provider value={userInformation}>

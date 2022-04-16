@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { getUserProfileInformation } from "../../api";
-import { UserInformation, UserInformationContext } from "../../context/UserInformationContext";
+import { IUserInformation, UserInformationContext } from "../../context/UserInformationContext";
 import { Container, Spinner } from "./styles";
 
 interface IFoundUser
@@ -32,7 +32,7 @@ export const SearchBar = ({foundUser, setFoundUser}: IFoundUser) =>
         setSearching (false);
     }
 
-    const checkUserFound = (userInformation: UserInformation) =>
+    const checkUserFound = (userInformation: IUserInformation) =>
     {
         typeof userInformation.username === 'undefined' ? setFoundUser (false) : setFoundUser (true);
     }

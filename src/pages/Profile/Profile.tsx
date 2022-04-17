@@ -11,7 +11,7 @@ export const Profile = () =>
 {
     const userInformationContext = useContext (UserInformationContext);
     const repositoriesContext = useContext (RepositoriesInformationContext);
-    
+
     return (
         <Container>
             <Avatar link={userInformationContext.profile_picture} />
@@ -24,8 +24,9 @@ export const Profile = () =>
             <h3>Top Repositories</h3>
             <TopRepositories>
             {
-                repositoriesContext.map (repository =>  
+                repositoriesContext.map ((repository, index) =>  
                     <RepositoryItem 
+                        key={index}
                         name={repository.name} 
                         stargazers_count={repository.stargazers_count}
                         url={repository.url} />    

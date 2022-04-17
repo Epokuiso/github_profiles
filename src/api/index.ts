@@ -6,7 +6,6 @@ const USERS = "users/";
 const REPOSITORIES = "/repos";
 
 let userInformation: IUserInformation = defaultState;
-let repositories: any[] = [];
 
 export const getUserProfileInformation = async (username: string) => 
 {
@@ -32,6 +31,7 @@ const getFormatedUserData = (data: any) =>
 
 export const getRepositories = async (username: string) =>
 {
+    let repositories: any[] = [];
     await fetch (URL + USERS + username + REPOSITORIES)
     .then (response => response.json ())
     .then (data => repositories.push (...data))

@@ -10,8 +10,7 @@ export const Profile = () =>
 {
     const userInformationContext = useContext (UserInformationContext);
     const repositoriesContext = useContext (RepositoriesInformationContext);
-    console.log (repositoriesContext);
-
+    
     return (
         <Container>
             <Avatar link={userInformationContext.profile_picture} />

@@ -40,6 +40,13 @@ export const SearchBar = ({foundUser, setFoundUser}: ISearchBarProps) =>
         userInformationContext.profile_url = data.profile_url;
     }
 
+    const setUserStars = () =>
+    {
+        let starCount = 0;
+        repositoriesContext.forEach (repository => starCount += repository.stargazers_count);
+        userInformationContext.stars = starCount;
+    }
+
     const setUserRepositories = async () =>
     {
         const repos = await getRepositories (userInformationContext.username);
@@ -74,6 +81,7 @@ export const SearchBar = ({foundUser, setFoundUser}: ISearchBarProps) =>
         else 
         {
             await setUserRepositories ();
+            setUserStars ();
             redirectToProfilePage ();
         }
     }

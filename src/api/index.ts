@@ -3,6 +3,7 @@ import { defaultState, IUserInformation } from "../context/UserInformationContex
 
 const URL = "https://api.github.com/";
 const USERS = "users/";
+const REPOSITORIES = "/repos";
 
 let userInformation: IUserInformation = defaultState;
 
@@ -22,6 +23,7 @@ const getFormatedUserData = (data: any) =>
         followers: data?.followers,
         following: data?.following,
         stars: 0,
+        repos: data?.public_repos,
         profile_picture: data?.avatar_url,
         profile_url: data?.html_url
     })

@@ -16,7 +16,7 @@ export const Profile = () =>
             <Status>
                 <StatusItem title="Followers" count={userInformationContext.followers} />
                 <StatusItem title="Stars" count={userInformationContext.stars} />
-                <StatusItem title="Repositories" count={0}/>
+                <StatusItem title="Repositories" count={userInformationContext.repos }/>
             </Status>
         </Container>
     )

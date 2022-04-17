@@ -32,6 +32,7 @@ export const SearchBar = ({foundUser, setFoundUser}: ISearchBarProps) =>
     {
         userInformationContext.followers = data.followers;
         userInformationContext.following = data.following;
+        userInformationContext.repos = data.repos;
         userInformationContext.profile_picture = data.profile_picture;
         userInformationContext.profile_url = data.profile_url;
     }

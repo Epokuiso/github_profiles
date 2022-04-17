@@ -7,6 +7,7 @@ export interface IUserInformation
     followers: number;
     following: number;
     stars: number;
+    repos: number;
     profile_picture: string;
     profile_url: string;
 };
@@ -18,6 +19,7 @@ export const defaultState =
     followers: 0,
     following: 0,
     stars: 0,
+    repos: 0,
     profile_picture: '',
     profile_url: ''
 };

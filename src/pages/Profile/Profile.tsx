@@ -1,10 +1,11 @@
 import { useContext } from "react"
 import { Avatar } from "../../components/Avatar/Avatar"
+import { RepositoryItem } from "../../components/RepositoryItem/RepositoryItem"
 import { StatusItem } from "../../components/StatusItem/StatusItem"
 import { Username } from "../../components/Username/Username"
 import { RepositoriesInformationContext } from "../../context/RepositoriesInformationContext"
 import { UserInformationContext } from "../../context/UserInformationContext"
-import { Container, Status } from "./styles"
+import { Container, Status, TopRepositories } from "./styles"
 
 export const Profile = () =>
 {
@@ -20,6 +21,17 @@ export const Profile = () =>
                 <StatusItem title="Stars" count={userInformationContext.stars} />
                 <StatusItem title="Repositories" count={userInformationContext.repos }/>
             </Status>
+            <h3>Top Repositories</h3>
+            <TopRepositories>
+            {
+                repositoriesContext.map (repository =>  
+                    <RepositoryItem 
+                        name={repository.name} 
+                        stargazers_count={repository.stargazers_count}
+                        url={repository.url} />    
+                )   
+            }
+            </TopRepositories>
         </Container>
     )
 }

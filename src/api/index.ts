@@ -1,4 +1,3 @@
-import { IRepositoriesInformation } from "../context/RepositoriesInformationContext";
 import { defaultState, IUserInformation } from "../context/UserInformationContext";
 
 

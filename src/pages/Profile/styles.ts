@@ -46,7 +46,7 @@ export const Container = styled.main`
 
         > h3
         {
-            font-size: 14px;
+            font-size: 1.3rem;
         }
     }
 `;
@@ -60,11 +60,9 @@ export const Status = styled.div`
     > span
     {
         align-items: center;
-        border: 2px solid var(--dark-border-color);
-        border-radius: 100%;
         color: var(--dark-text-color);
         display: flex;
-        font-size: .9rem;
+        font-size: 1.2rem;
         font-weight: 600;
         flex-direction: column;
         height: 75px;
@@ -75,11 +73,11 @@ export const Status = styled.div`
 
     @media (min-width: 750px)
     {
-        width: 450px;
+        width: 400px;
 
         > span
         {
-            font-size: .99rem;
+            font-size: 1.10rem;
             height: 82px;
             transition: transform ease-in-out 500ms;
             width: 84px;

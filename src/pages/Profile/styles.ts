@@ -35,11 +35,25 @@ export const Container = styled.main`
         margin: 1.2rem;
         font-size: 15px;
     }
+
+    @media (min-width: 750px)
+    {
+        > img 
+        {
+            height: 110px;
+            width: 110px;
+        }
+
+        > h3
+        {
+            font-size: 14px;
+        }
+    }
 `;
 
 export const Status = styled.div`
     display: inherit;
-    min-width: 370px;
+    min-width: 300px;
     justify-content: space-between;
     padding: 1.2rem;
 
@@ -50,13 +64,25 @@ export const Status = styled.div`
         border-radius: 100%;
         color: var(--dark-text-color);
         display: flex;
-        font-size: 1.1rem;
+        font-size: .9rem;
         font-weight: 600;
         flex-direction: column;
-        height: 89px;
+        height: 75px;
         justify-content: space-evenly;
         padding: 1rem;
-        width: 90px;
+        width: 76px;
+    }
+
+    @media (min-width: 750px)
+    {
+        width: 450px;
+
+        > span
+        {
+            font-size: .99rem;
+            height: 82px;
+            width: 84px;
+        }
     }
 `;
 
@@ -75,7 +101,7 @@ export const TopRepositories = styled.div`
         font-size: 13px;
         justify-content: space-between;
         margin-bottom: .55rem;
-        min-height: 46px;
+        height: 56px;
         padding: 1rem;
 
         > a
@@ -98,4 +124,16 @@ export const TopRepositories = styled.div`
         }
     }
 
+    @media (min-width: 750px)
+    {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 720px;
+
+        > div 
+        {
+            width: calc(50% - 1rem);
+        }
+    }
 `;

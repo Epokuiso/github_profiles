@@ -1,13 +1,12 @@
 import { createContext } from "react";
 
 
-interface RepositoriesInformation
+export interface IRepositoriesInformation
 {
     name: string;
     created_at: Date;
     stargazers_count: number;
     url: string
-    
 };
 
-export const RepositoriesInformationContext = createContext <RepositoriesInformation []> ([]); 
+export const RepositoriesInformationContext = createContext <IRepositoriesInformation []> ([]); 

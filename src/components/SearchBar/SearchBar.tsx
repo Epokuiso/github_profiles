@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getUserProfileInformation } from "../../api";
+import { getRepositories, getUserProfileInformation } from "../../api";
+import { RepositoriesInformationContext } from "../../context/RepositoriesInformationContext";
 import { IUserInformation, UserInformationContext } from "../../context/UserInformationContext";
 import { Container, Spinner } from "./styles";
 
@@ -15,6 +16,8 @@ export const SearchBar = ({foundUser, setFoundUser}: ISearchBarProps) =>
 {
     const [searching, setSearching] = useState (false);
     const userInformationContext = useContext (UserInformationContext);
+
+    const repositoriesContext = useContext (RepositoriesInformationContext);
     let navigate = useNavigate ();
     
     const setUsername = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -37,12 +40,24 @@ export const SearchBar = ({foundUser, setFoundUser}: ISearchBarProps) =>
         userInformationContext.profile_url = data.profile_url;
     }
 
+    const setUserRepositories = async () =>
+    {
+        const repos = await getRepositories (userInformationContext.username);
+        repos.forEach (repository => 
+            repositoriesContext.push({
+                name: repository?.name,
+                created_at: repository?.created_at,
+                stargazers_count: repository?.stargazers_count,
+                url: repository?.html_url
+            })
+        );
+    }
+
     const searchUsername = async () =>
     {
         setSearching (true);
         assignDataToContext (await getUserProfileInformation (userInformationContext.username));       
-        checkUserFound (userInformationContext);
-        redirectToProfilePage ();
+        await checkUserFound (userInformationContext);
     }
 
     const redirectToProfilePage = () => 
@@ -52,9 +67,15 @@ export const SearchBar = ({foundUser, setFoundUser}: ISearchBarProps) =>
         navigate ('profile');
     }
 
-    const checkUserFound = (userInformation: IUserInformation) =>
+    const checkUserFound = async (userInformation: IUserInformation) =>
     {
-        typeof userInformation.username === 'undefined' ? setFoundUser (false) : redirectToProfilePage ();
+        if (typeof userInformation.username === 'undefined')
+            setFoundUser (false);
+        else 
+        {
+            await setUserRepositories ();
+            redirectToProfilePage ();
+        }
     }
 
     return (

@@ -1,3 +1,4 @@
+import { IRepositoriesInformation } from "../context/RepositoriesInformationContext";
 import { defaultState, IUserInformation } from "../context/UserInformationContext";
 
 
@@ -6,6 +7,7 @@ const USERS = "users/";
 const REPOSITORIES = "/repos";
 
 let userInformation: IUserInformation = defaultState;
+let repositories: any[] = [];
 
 export const getUserProfileInformation = async (username: string) => 
 {
@@ -27,4 +29,12 @@ const getFormatedUserData = (data: any) =>
         profile_picture: data?.avatar_url,
         profile_url: data?.html_url
     })
+}
+
+export const getRepositories = async (username: string) =>
+{
+    await fetch (URL + USERS + username + REPOSITORIES)
+    .then (response => response.json ())
+    .then (data => repositories.push (...data))
+    return repositories;
 }

@@ -81,7 +81,13 @@ export const Status = styled.div`
         {
             font-size: .99rem;
             height: 82px;
+            transition: transform ease-in-out 500ms;
             width: 84px;
+
+            &:hover 
+            {
+                transform: scale(1.04);
+            }
         }
     }
 `;
@@ -122,6 +128,7 @@ export const TopRepositories = styled.div`
             display: inherit;
             flex-direction: column;
         }
+
     }
 
     @media (min-width: 750px)
@@ -133,7 +140,13 @@ export const TopRepositories = styled.div`
 
         > div 
         {
+            transition: transform ease-in-out 500ms;
             width: calc(50% - 1rem);
+
+            &:hover 
+            {
+                transform: scale(1.04);
+            }
         }
     }
 `;

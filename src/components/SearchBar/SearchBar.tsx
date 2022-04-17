@@ -4,17 +4,17 @@ import { getUserProfileInformation } from "../../api";
 import { IUserInformation, UserInformationContext } from "../../context/UserInformationContext";
 import { Container, Spinner } from "./styles";
 
-interface IFoundUser
+interface ISearchBarProps
 {
     foundUser: boolean;
     setFoundUser: (isFound: boolean) => void
 }
 
 
-export const SearchBar = ({foundUser, setFoundUser}: IFoundUser) =>
+export const SearchBar = ({foundUser, setFoundUser}: ISearchBarProps) =>
 {
     const [searching, setSearching] = useState (false);
-    let userInformationContext = useContext (UserInformationContext);
+    const userInformationContext = useContext (UserInformationContext);
     let navigate = useNavigate ();
     
     const setUsername = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -28,16 +28,26 @@ export const SearchBar = ({foundUser, setFoundUser}: IFoundUser) =>
         key.code === 'Enter' ? await searchUsername () : await null;
     }
 
+    const assignDataToContext = (data: IUserInformation) =>
+    {
+        userInformationContext.followers = data.followers;
+        userInformationContext.following = data.following;
+        userInformationContext.profile_picture = data.profile_picture;
+        userInformationContext.profile_url = data.profile_url;
+    }
+
     const searchUsername = async () =>
     {
         setSearching (true);
-        checkUserFound (userInformationContext = await getUserProfileInformation (userInformationContext.username));
-        setSearching (false);
+        assignDataToContext (await getUserProfileInformation (userInformationContext.username));       
+        checkUserFound (userInformationContext);
+        redirectToProfilePage ();
     }
 
     const redirectToProfilePage = () => 
     {
         setFoundUser (true);
+        setSearching (false);
         navigate ('profile');
     }
 

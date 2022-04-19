@@ -85,7 +85,9 @@ const changeRepositories = (repositoryA: IRepositoriesInformation, repositoryB: 
 const trimRepositories = (repositories: IRepositoriesInformation []) =>
 {
     while (repositories.length > TOP_REPOSITORIES_COUNT)
-        repositories.pop ();    
+    {
+        repositories.pop ();
+    }    
 }
 
 export const sortTopRepositories = (repositories: IRepositoriesInformation[]) =>

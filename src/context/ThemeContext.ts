@@ -2,10 +2,11 @@ import { createContext } from "react";
 
 interface ITheme
 {
-    toggle: boolean;
-    setTheme: (state: boolean) => void
+    name: string;
+    setTheme: (state: string) => void
 }
 
-const defaultFunction = (state: boolean) => {};
+const defaultFunction = (state: string) => {};
 
-export const ThemeContext = createContext <ITheme> ({toggle: true, setTheme: defaultFunction});
+
+export const ThemeContext = createContext <ITheme> ({name: 'dark', setTheme: defaultFunction});

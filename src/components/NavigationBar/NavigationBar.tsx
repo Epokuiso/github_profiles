@@ -8,10 +8,10 @@ import { ThemeContext } from "../../context/ThemeContext";
 
 export const NavigationBar = () => 
 {
-    const showGoBackButton = window.location.pathname === '/profile' ? true : false,
-    userInformationContext = useContext (UserInformationContext),
-    repositioriesContext = useContext (RepositoriesInformationContext),
-    themeContext = useContext(ThemeContext);
+    const showGoBackButton = window.location.pathname === '/profile' ? true : false;
+    const userInformationContext = useContext (UserInformationContext);
+    const repositioriesContext = useContext (RepositoriesInformationContext);
+    const themeContext = useContext(ThemeContext);
 
     let navigate = useNavigate ();
 
@@ -28,33 +28,35 @@ export const NavigationBar = () =>
     const resetRepositoriesContext = () =>
     {
         while (repositioriesContext.length !== 0) 
-            repositioriesContext.pop();    
-        console.log (repositioriesContext)
+        {    repositioriesContext.pop(); }
+           
     }
 
     const resetContexts = () =>
     {
         resetUserInformationContext ();
         resetRepositoriesContext ();
-        navigate ('/')
+        navigate ('/'); 
     }
 
     const toggleTheme = () =>
     {
-        themeContext.setTheme(!themeContext.toggle);
+        themeContext.name === 'dark' ? themeContext.setTheme ('light') : themeContext.setTheme ('dark');
     }
 
     return (
         <>
             <Container>
-                { showGoBackButton ? 
-                    <img src={Button} alt='Go Back' onClick={() => resetContexts ()}/> : null 
+                { 
+                    showGoBackButton ? <img src={Button} alt='Go Back' onClick={() => resetContexts ()} /> : null
                 } 
                 <ToggleSwitchTheme>
-                    {
-                        themeContext.toggle ? <input type="checkbox" onClick={() => toggleTheme()} defaultChecked />
-                        : <input type="checkbox" onClick={() => toggleTheme()} />
-                    }
+                {
+                    themeContext.name === 'dark' ? 
+                        <input type="checkbox" onClick={() => toggleTheme ()} defaultChecked />
+                        : 
+                        <input type="checkbox" onClick={() => toggleTheme ()} />
+                }
                     <span className="slider round"></span>  
                 </ToggleSwitchTheme>    
             </Container>

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserProfileInformation, setUserRepositories, setUserStars, sortTopRepositories } from "../../api";
 import { RepositoriesInformationContext } from "../../context/RepositoriesInformationContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import { IUserInformation, UserInformationContext } from "../../context/UserInformationContext";
 import { Container, Spinner } from "./styles";
 
@@ -15,10 +16,12 @@ interface ISearchBarProps
 export const SearchBar = ({foundUser, setFoundUser}: ISearchBarProps) =>
 {
     const [searching, setSearching] = useState (false);
-    const userInformationContext = useContext (UserInformationContext);
+    const userInformationContext = useContext (UserInformationContext),
+    repositoriesContext = useContext (RepositoriesInformationContext);
 
-    const repositoriesContext = useContext (RepositoriesInformationContext);
-    let navigate = useNavigate ();
+    let navigate = useNavigate (); 
+    const { name } =  useContext (ThemeContext);
+
     
     const setUsername = (event: React.ChangeEvent<HTMLInputElement>) =>
     {
@@ -72,7 +75,7 @@ export const SearchBar = ({foundUser, setFoundUser}: ISearchBarProps) =>
     }
 
     return (
-        <Container>
+        <Container theme={name}>
             <div className={`search-input ${foundUser ? '' : 'not-found'}`}>
                 <input
                     className={`search-input-text  ${foundUser ? '' : 'not-found'}`} 
@@ -86,7 +89,7 @@ export const SearchBar = ({foundUser, setFoundUser}: ISearchBarProps) =>
                 <button onClick={ async () => await searchUsername () }>Search</button>
             </div>
             {
-                !searching ? null : <Spinner />
+                !searching ? null : <Spinner theme={name} />
             }
         </Container>
     );

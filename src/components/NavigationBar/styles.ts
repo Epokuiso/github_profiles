@@ -10,6 +10,7 @@ export const Container = styled.header`
 
     > img 
     {
+        ${props => props.theme === 'light' ? 'color: black' : ''}
         cursor: pointer;
     }
 `;
@@ -17,10 +18,11 @@ export const Container = styled.header`
 
 export const ToggleSwitchTheme = styled.label`
     position: absolute;
-    right: 2rem;
     display: inline-block;
     width: 60px;
+    right: 2rem;
     height: 34px;
+    z-index: 2;
 
     > input 
     {

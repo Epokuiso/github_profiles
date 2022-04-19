@@ -8,15 +8,15 @@ export const Container = styled.main`
     > img 
     {
         border-radius: 100%;
-        box-shadow: 0 0 0 2px var(--dark-background-color),
-                    0 0 0 4px var(--dark-border-color);
+        box-shadow: 0 0 0 2px ${props => props.theme === 'dark' ? 'var(--dark-background-color)' : 'var(--light-background-color)'},
+                    0 0 0 4px ${props => props.theme === 'dark' ? 'var(--dark-border-color)' : 'var(--light-border-color)'};
         height: 119px;
         width: 120px;
     }
 
     > a:first-of-type 
     {
-        color: var(--dark-text-color);
+        color: ${props => props.theme === 'dark' ? 'var(--dark-text-color)' : 'var(--light-text-color)'};
         font-size: 1.65rem;
         font-weight: bold;
         margin: 1.6rem 0;
@@ -31,7 +31,7 @@ export const Container = styled.main`
     > h3
     {
         align-self: flex-start;
-        color: var(--dark-text-color);
+        color: ${props => props.theme === 'dark' ? 'var(--dark-text-color)' : 'var(--light-text-color)'};
         margin: 1.2rem;
         font-size: 15px;
     }
@@ -60,7 +60,7 @@ export const Status = styled.div`
     > span
     {
         align-items: center;
-        color: var(--dark-text-color);
+        color: ${props => props.theme === 'dark' ? 'var(--dark-text-color)' : 'var(--light-text-color)'};
         display: flex;
         font-size: 1.2rem;
         font-weight: 600;
@@ -99,7 +99,7 @@ export const TopRepositories = styled.div`
     > div 
     {
         align-items: center;
-        border: 2px solid var(--dark-border-color);
+        border: 2px solid ${props => props.theme === 'dark' ? 'var(--dark-border-color)' : 'var(--light-border-color)'};
         border-radius: 5px;
         display: flex;
         font-size: 13px;
@@ -110,7 +110,7 @@ export const TopRepositories = styled.div`
 
         > a
         {
-            color: var(--dark-text-color);
+            color: ${props => props.theme === 'dark' ? 'var(--dark-text-color)' : 'var(--light-text-color)'};
             text-decoration: none;
 
             &:hover
@@ -122,7 +122,7 @@ export const TopRepositories = styled.div`
         > span
         {
             align-items: center;
-            color: var(--dark-text-color);
+            color: ${props => props.theme === 'dark' ? 'var(--dark-text-color)' : 'var(--light-text-color)'};
             display: inherit;
             flex-direction: column;
         }

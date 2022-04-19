@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.main`
-    color: var(--dark-text-color);
+    color: ${ props => props.theme === 'dark' ? 'var(--dark-text-color)' : 'var(--light-text-color)'};
     display: flex;
     flex-direction: column;
     padding: 0 1.4rem;   
-
+    
     > h1
     {
-        font-size: 24px;
+        font-size: 24px;    
         font-weight: 600;
         margin: 0 auto 0 auto;
 

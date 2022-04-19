@@ -7,6 +7,10 @@ export const GlobalStyle = createGlobalStyle`
         --dark-text-color: #FFFFFF;
         --dark-border-color: #00ADB5;
 
+        --light-background-color: #F1F3F4;
+        --light-text-color: black;
+        --light-border-color: black;
+
         --not-found-color: #FC4F4F;
     }
     
@@ -15,6 +19,7 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        outline: none;
     }
 
     html
@@ -33,7 +38,7 @@ export const GlobalStyle = createGlobalStyle`
     body 
     {
         -webkit-font-smoothing: antialiased;
-        background-color: var(--dark-background-color);
+        background-color: ${ props => props.theme === 'dark' ? 'var(--dark-background-color)' : 'var(--light-background-color)'}; 
         height: 100vh;
         width: 100vw;
     }
@@ -57,5 +62,10 @@ export const GlobalStyle = createGlobalStyle`
         flex-direction: column;
         justify-content: center;
         position: relative;
+    }
+
+    body, h1, h2, h3, p, div, button, img 
+    {
+        transition: color 750ms ease-in-out, background-color 750ms ease-in-out, border-color 750ms ease-in-out;
     }
 `;

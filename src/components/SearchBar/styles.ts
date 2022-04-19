@@ -7,7 +7,7 @@ export const Container = styled.div`
 
     > .search-input 
     {
-        border: 2px solid var(--dark-border-color);
+        border: 2px solid ${props => props.theme === 'dark' ? 'var(--dark-border-color)' : 'var(--light-border-color)'};
         border-radius: 5px;
         display: inherit;
         outline: none;
@@ -15,7 +15,7 @@ export const Container = styled.div`
         > input[type='text'], > button
         {
             border: none;
-            color: var(--dark-text-color);
+            color: ${props => props.theme === 'dark' ? 'var(--dark-text-color)' : 'var(--light-text-color)'};
             font-size: 14px;
             font-weight: 500;
             outline: none;
@@ -28,7 +28,7 @@ export const Container = styled.div`
 
         > input[type='text']
         {
-            background-color: var(--dark-background-color);
+            background-color: ${props => props.theme === 'dark' ? 'var(--dark-background-color)' : 'var(--light-background-color)'};
             border-radius: inherit;
             padding: 1rem;
 
@@ -50,7 +50,8 @@ export const Container = styled.div`
 
         > button
         {
-            background-color: var(--dark-border-color);
+            ${props => props.theme === 'light' ? 'color: white;' : ''}
+            background-color: ${props => props.theme === 'dark' ? 'var(--dark-border-color)' : 'var(--light-text-color)'};
             width: 97px;
         }
     }
@@ -73,8 +74,8 @@ export const Spinner = styled.div`
     {
         animation: rotate 1.2s linear infinite;
         border-radius: 50%;
-        border: 6px solid #fff;
-        border-color: #fff transparent #fff transparent;
+        border: 6px solid ${props => props.theme === 'dark' ? '#fff' : 'black'};
+        border-color: ${props => props.theme === 'dark' ? '#fff' : 'black'} transparent ${props => props.theme === 'dark' ? '#fff' : 'black'} transparent;
         content: " ";
         display: block;
         height: 30px;

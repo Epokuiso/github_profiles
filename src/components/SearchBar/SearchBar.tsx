@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getRepositories, getUserProfileInformation } from "../../api";
+import { getUserProfileInformation, setUserRepositories, setUserStars, sortTopRepositories } from "../../api";
 import { RepositoriesInformationContext } from "../../context/RepositoriesInformationContext";
 import { IUserInformation, UserInformationContext } from "../../context/UserInformationContext";
 import { Container, Spinner } from "./styles";
@@ -33,31 +33,12 @@ export const SearchBar = ({foundUser, setFoundUser}: ISearchBarProps) =>
 
     const assignDataToContext = (data: IUserInformation) =>
     {
+        userInformationContext.username = data.username;
         userInformationContext.followers = data.followers;
         userInformationContext.following = data.following;
         userInformationContext.repos = data.repos;
         userInformationContext.profile_picture = data.profile_picture;
         userInformationContext.profile_url = data.profile_url;
-    }
-
-    const setUserStars = () =>
-    {
-        let starCount = 0;
-        repositoriesContext.forEach (repository => starCount += repository.stargazers_count);
-        userInformationContext.stars = starCount;
-    }
-
-    const setUserRepositories = async () =>
-    {
-        const repos = await getRepositories (userInformationContext.username);
-        repos.forEach (repository => 
-            repositoriesContext.push({
-                name: repository?.name,
-                created_at: repository?.created_at,
-                stargazers_count: repository?.stargazers_count,
-                url: repository?.html_url
-            })
-        );
     }
 
     const searchUsername = async () =>
@@ -77,11 +58,15 @@ export const SearchBar = ({foundUser, setFoundUser}: ISearchBarProps) =>
     const checkUserFound = async (userInformation: IUserInformation) =>
     {
         if (typeof userInformation.username === 'undefined')
+        {
             setFoundUser (false);
+            setSearching (false);
+        }    
         else 
         {
-            await setUserRepositories ();
-            setUserStars ();
+            await setUserRepositories (repositoriesContext, userInformationContext.username);    
+            sortTopRepositories (repositoriesContext);
+            setUserStars (repositoriesContext, userInformation);
             redirectToProfilePage ();
         }
     }

@@ -25,10 +25,9 @@ export const NavigationBar = () =>
 
     const resetRepositoriesContext = () =>
     {
-        repositioriesContext.forEach (repo => {
-            repositioriesContext.pop()
-        });
-        repositioriesContext.pop ();
+        while (repositioriesContext.length !== 0) 
+            repositioriesContext.pop();    
+        console.log (repositioriesContext)
     }
 
     const resetContexts = () =>
@@ -42,9 +41,7 @@ export const NavigationBar = () =>
         <>
             <Container>
                 { showGoBackButton ? 
-                    <img src={Button} alt='Go Back' onClick={async () => resetContexts ()}/> 
-                        : 
-                    null 
+                    <img src={Button} alt='Go Back' onClick={() => resetContexts ()}/> : null 
                 } 
             </Container>
         </>

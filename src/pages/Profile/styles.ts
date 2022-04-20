@@ -4,6 +4,7 @@ export const Container = styled.main`
     align-items: center;
     display: inherit;
     flex-direction: column;
+    flex-grow: 1;
 
     > img 
     {

@@ -4,6 +4,7 @@ export const Container = styled.main`
     color: ${ props => props.theme === 'dark' ? 'var(--dark-text-color)' : 'var(--light-text-color)'};
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     padding: 0 1.4rem;   
     
     > h1

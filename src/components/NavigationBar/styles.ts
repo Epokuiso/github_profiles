@@ -10,7 +10,6 @@ export const Container = styled.header`
 
     > img 
     {
-        ${props => props.theme === 'light' ? 'color: black' : ''}
         cursor: pointer;
     }
 `;

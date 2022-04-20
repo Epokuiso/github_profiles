@@ -3,10 +3,10 @@ import { createContext } from "react";
 interface ITheme
 {
     name: string;
-    setTheme: (state: string) => void
+    setTheme: () => void
 }
 
-const defaultFunction = (state: string) => {};
+const defaultFunction = () => {};
 
 
 export const ThemeContext = createContext <ITheme> ({name: 'dark', setTheme: defaultFunction});

@@ -8,10 +8,10 @@ import { Container, ErrorMessage } from "./styles";
 export const MainSection = () => 
 {
     const [foundUser, setFoundUser] = useState (true);
-    const { name } = useContext (ThemeContext);
+    const { name }  = useContext (ThemeContext);
 
     return (
-        <Container theme={name}>
+        <Container theme={ name }>
             <Title title='GitHub Profiles' />
             <UsageTip usageTip='Search for GitHub profiles using usernames.' />
             <SearchBar foundUser={foundUser} setFoundUser={setFoundUser} />

@@ -98,15 +98,17 @@ export const TopRepositories = styled.div`
 
     > div 
     {
+        animation: pop-up 750ms 0s ease-in-out forwards;
         align-items: center;
-        border: 2px solid ${props => props.theme === 'dark' ? 'var(--dark-border-color)' : 'var(--light-border-color)'};
+        border: 0 solid ${props => props.theme === 'dark' ? 'var(--dark-border-color)' : 'var(--light-border-color)'};
         border-radius: 5px;
         display: flex;
         font-size: 13px;
         justify-content: space-between;
         margin-bottom: .55rem;
-        height: 56px;
-        padding: 1rem;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
 
         > a
         {
@@ -125,6 +127,20 @@ export const TopRepositories = styled.div`
             color: ${props => props.theme === 'dark' ? 'var(--dark-text-color)' : 'var(--light-text-color)'};
             display: inherit;
             flex-direction: column;
+        }
+
+
+        @keyframes pop-up {
+            from {
+                border-width: 0;
+                height: 0;
+                padding: 0;
+            }
+            to {
+                border-width: 2px;
+                height: 56px;
+                padding: 1rem;
+            }
         }
 
     }

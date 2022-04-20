@@ -66,6 +66,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body, h1, h2, h3, p, div, button, img 
     {
-        transition: color 750ms ease-in-out, background-color 750ms ease-in-out, border-color 750ms ease-in-out;
+        transition: color 750ms ease-in-out, background-color 750ms ease-in-out, border-color 750ms ease-in-out,
+            padding 750ms ease-in-out;
     }
 `;
